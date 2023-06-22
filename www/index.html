@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="starter" ng-controller="currencyController">
+
+    <ion-pane>
+      <ion-header-bar class="bar bar-calm" >
+        <h1 class="title" >Currency Converter</h1>
+      </ion-header-bar>
+      <ion-content class="padding">
+        <section>
+          <h3 >Currency Converter</h3>
+          <form class="list">
+            
+              <label >
+                Amount
+                <input type="number" name="amount" id="amount" placeholder="1.00" min="0">
+              </label>
+            <label >FROM
+            
+            </label>
+           
+            <select class="item item-input item-select item-calm" id="fromCurrency">
+              <option ng-repeat="currency in currencies" value="{{currency}}">{{currency[0]}}</option>
+             
+            </select>
+            <label >TO</label>
+            <select class="item item-input item-select item-calm" id="toCurrency" >
+              <option ng-repeat="currency in currencies" value="{{currency}}">{{currency[0]}}</option>
+              
+            </select>
+          </form>
+          <button class="button  button-calm" ng-click="convert()">Convert</button>
+        </section>
+        <h2 id="convertedAmount"></h2>
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>
